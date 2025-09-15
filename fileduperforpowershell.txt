@@ -1,0 +1,11 @@
+$originalFile = "/Users/username/Downloads/example.mp4"
+
+$directory = Split-Path $originalFile
+$filename = [System.IO.Path]::GetFileNameWithoutExtension($originalFile)
+$extension = [System.IO.Path]::GetExtension($originalFile)
+
+$newFile = Join-Path $directory "$filename`_copy$extension"
+
+Copy-Item -Path $originalFile -Destination $newFile -Force
+
+Write-Output "File duplicated: $newFile"
